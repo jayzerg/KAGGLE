@@ -1,29 +1,43 @@
 # 📊 Dynamic Retail Performance Dashboard
 
-A comprehensive data analytics and visualization dashboard built with **Streamlit**, **Pandas**, and **Plotly**. This application allows users to upload, clean, and visualize retail sales data with automated insights and interactive charts.
+A professional, enterprise-grade Business Intelligence platform built with **Streamlit**, **Pandas**, **Plotly**, and **Scikit-Learn**. This application transforms raw retail data into a strategic, decision-ready analytics suite.
 
 ---
 
 ## 🚀 Key Features
 
-*   **Multi-format File Support:** Seamlessly load `.csv` (with automatic encoding detection and error handling) and `.xlsx` files.
-*   **Auto-detect Analytics:** Automatically identifies date, numeric, and categorical columns to generate relevant charts.
-*   **Interactive Visualizations:**
-    *   **Distribution Analysis:** View bar charts of revenue/metrics by category.
-    *   **Trend Analysis:** Track performance over time with interactive line charts.
-    *   **Category Breakdown:** Pie charts for quick market share visualization.
-    *   **Correlation Analysis:** Scatter plots to find relationships between numeric variables.
-*   **Dynamic Filtering:** Sidebar filters are automatically generated based on your dataset's categories.
-*   **Data Export:** Download your filtered datasets directly as CSV files.
+This project has been enhanced with multiple tiers of analytical and UI capabilities:
+
+### 💼 Enterprise UI/UX (New)
+*   **Executive Slate Design System:** High-impact "Executive Slate" theme with custom Inter typography, styled KPI cards, and a cohesive, professional color palette.
+*   **Tabbed Navigation:** Organized into four strategic areas:
+    *   **📈 Overview:** High-level KPIs and algorithmically generated insights.
+    *   **📊 Analytics:** In-depth distribution, trend, and correlation analysis.
+    *   **🧠 Intelligence:** ML-driven driver analysis, geospatial mapping, and simulations.
+    *   **📄 Data:** Clean, filtered tabular view with export capability.
+*   **Theme Adaptive:** Fully supports both **Light** and **Dark** modes with a responsive, theme-aware CSS injection.
+
+### 📈 Tier 1: Foundational Analytics
+*   **Advanced Filtering:** Sidebar filters include hierarchical categorical drill-downs and dynamic quantitative metric sliders.
+*   **Comparative Analytics:** Period-over-Period (PoP) delta calculations on top metrics, automatically comparing filtered periods against preceding ones.
+*   **Predictive Forecasting:** Toggled linear regression forecasting (3 periods) integrated directly into trend analysis charts.
+
+### 🧠 Tier 2: Prescriptive Insights
+*   **Automated Data Storytelling:** Algorithmic "AI Insights" box generating natural language bullet points based on your current data view.
+*   **Strategic What-If Simulator:** Interactive dashboard to simulate future performance by adjusting cost reductions and sales growth parameters.
+*   **Automated Anomaly Detection:** Statistical outlier detection in trends, highlighting deviations (2σ) with specialized markers on Plotly charts.
+
+### 🌍 Tier 3: Advanced Intelligence
+*   **ML Predictive Driver Analysis:** Uses a **RandomForestRegressor** to statistically identify the top 5 factors driving your primary metrics.
+*   **Geospatial Analytics:** Automated map generation (scatter_geo or choropleth) for data containing geographical identifiers (States, Cities, etc.).
+*   **Correlation Matrix:** Interactive heatmap revealing statistical relationships across all numeric variables in your dataset.
 
 ---
 
 ## 🛠️ Installation & Setup
 
-Follow these steps to get the dashboard running on your local machine:
-
 ### 1. Prerequisites
-Ensure you have **Python 3.8+** and `pip` installed. You can check your version by running:
+Ensure you have **Python 3.8+** installed. Check your version:
 ```bash
 python --version
 ```
@@ -34,16 +48,8 @@ git clone https://github.com/jayzerg/KAGGLE.git
 cd KAGGLE
 ```
 
-### 3. Set Up a Virtual Environment (Recommended)
-```bash
-python -m venv venv
-# On Windows:
-venv\Scripts\activate
-# On MacOS/Linux:
-source venv/bin/activate
-```
-
-### 4. Install Dependencies
+### 3. Install Dependencies
+It is highly recommended to use a virtual environment.
 ```bash
 pip install -r requirements.txt
 ```
@@ -52,38 +58,39 @@ pip install -r requirements.txt
 
 ## 🏃 How to Run
 
-Launch the Streamlit server with the following command:
+Launch the dashboard:
 ```bash
 streamlit run app.py
 ```
-The application will automatically open in your default web browser at `http://localhost:8501`.
+The application will open at `http://localhost:8501`.
 
 ---
 
 ## 📂 Project Structure
 
-*   `app.py`: The main Streamlit entry point containing the dashboard UI and logic.
-*   `scripts/`: Core processing scripts for data operations:
-    *   `data_cleaning.py`: Utilities for handling missing values and data formatting.
-    *   `data_manipulation.py`: Functions for transformations and aggregations.
-    *   `file_reader.py`: Advanced file loading logic for different formats.
-*   `requirements.txt`: List of Python libraries required to run the project.
+*   `app.py`: Core application logic, UI design, and dashboard routing.
+*   `BI_ENHANCEMENT_PLAN.md`: Strategic roadmap and validation checklists for the BI implementation tiers.
+*   `requirements.txt`: Core dependencies (Streamlit, Pandas, Plotly, Scikit-Learn).
+*   `scripts/`: (Legacy/Utilities) Backend logic for varied file processing.
 
 ---
 
 ## 📋 Data Requirements
 
-*   **File Types:** `.csv`, `.xlsx`.
-*   **Headers:** The system expects headers at the top of your file. If your headers are at a specific row, you can adjust the "Found headers at row #" setting in the sidebar.
-*   **Clean Data:** While the app has built-in cleaning, ensure your numeric columns (Sales, Profit, etc.) don't contain non-numeric text for the best results.
+*   **Supported Formats:** `.csv`, `.xlsx`.
+*   **Column Detection:** The system automatically detects:
+    *   **Dates:** Columns containing "Date", "Order", or "Ship".
+    *   **Geography:** Columns for "City", "State", "Region", or "Country".
+    *   **Financials:** Numeric columns for Sales, Profit, Cost, etc.
+*   **Header Selection:** If headers are not in the first row, use the sidebar "Found headers at row #" selector to adjust.
 
 ---
 
 ## 💡 Usage Tips
 
-1.  **Handling Headers:** If your data appears as "Unnamed" columns, increase the **"Found headers at row #"** slider in the sidebar.
-2.  **Date Detection:** For the Best Trend Analysis, ensure your date columns contain "date", "order", or "ship" in the column name.
-3.  **Large Files:** For very large datasets, use CSV format for faster loading times compared to Excel.
+1.  **Date Filtering:** When you filter for a specific timeframe, the KPI cards automatically calculate the percentage change compared to the previous period of the same length.
+2.  **ML Driver Analysis:** If the predictive accuracy (R²) is low, try refining your categorical filters to reduce noise in the dataset for a clearer signal.
+3.  **Map Accuracy:** For best geospatial results, ensure your 'State' or 'Country' column names follow standard conventions.
 
 ---
 
