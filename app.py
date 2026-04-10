@@ -179,49 +179,108 @@ def inject_modern_ui_css():
   color: var(--color-text);
 }
 
-/* Sidebar Refinement */
+/* ═══════════════════════════════════════════════════════════════════
+   STATIC SIDEBAR — Always Visible, Responsive Breakpoints
+   Desktop ≥1200px: Full sidebar (280px)
+   Tablet 768–1199px: Compact sidebar (220px)
+   Mobile ≤767px: Collapsed to minimal width, scrollable
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Hide ALL sidebar toggle/collapse/expand buttons */
+button[data-testid="stSidebarCollapseButton"],
+button[data-testid="stSidebarExpandButton"],
+[data-testid="collapsedControl"],
+button[data-testid="stBaseButton-headerNoPadding"] {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Base sidebar — always visible */
 [data-testid="stSidebar"] {
   border-right: 1px solid var(--color-border);
   background-color: var(--color-surface-elevated);
+  transform: none !important;
+  transition: width var(--transition-base), min-width var(--transition-base), padding var(--transition-base);
 }
 
-/* Sidebar Toggle Button — Always Visible */
-button[data-testid="stSidebarCollapseButton"],
-button[data-testid="stSidebarExpandButton"] {
-  background-color: var(--color-primary) !important;
-  color: #ffffff !important;
-  border: 2px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 50% !important;
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: var(--shadow-md) !important;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast) !important;
-  z-index: 9999 !important;
+/* Prevent Streamlit from collapsing the sidebar */
+[data-testid="stSidebar"][aria-expanded="false"] {
+  transform: none !important;
+  width: auto !important;
+  min-width: 220px !important;
+  margin-left: 0 !important;
+  left: 0 !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
-button[data-testid="stSidebarCollapseButton"]:hover,
-button[data-testid="stSidebarExpandButton"]:hover {
-  background-color: var(--color-primary-hover) !important;
-  box-shadow: var(--shadow-lg) !important;
-  transform: scale(1.1) !important;
+/* Desktop: Full sidebar */
+@media (min-width: 1200px) {
+  [data-testid="stSidebar"] {
+    min-width: 280px !important;
+    max-width: 320px !important;
+  }
+  [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    padding: 1.5rem 1.25rem !important;
+  }
 }
 
-button[data-testid="stSidebarCollapseButton"]:active,
-button[data-testid="stSidebarExpandButton"]:active {
-  transform: scale(0.95) !important;
+/* Tablet: Compact sidebar */
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid="stSidebar"] {
+    min-width: 220px !important;
+    max-width: 260px !important;
+  }
+  [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    padding: 1rem 0.85rem !important;
+  }
+  /* Tighter typography on tablet */
+  [data-testid="stSidebar"] .stMarkdown h1,
+  [data-testid="stSidebar"] .stMarkdown h2 {
+    font-size: 1rem !important;
+  }
+  [data-testid="stSidebar"] .stMarkdown h3 {
+    font-size: 0.85rem !important;
+  }
+  [data-testid="stSidebar"] .stMarkdown p,
+  [data-testid="stSidebar"] .stMarkdown label {
+    font-size: 0.8rem !important;
+  }
 }
 
-/* Ensure toggle icon is visible */
-button[data-testid="stSidebarCollapseButton"] svg,
-button[data-testid="stSidebarExpandButton"] svg {
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
+/* Mobile: Narrow sidebar with scroll */
+@media (max-width: 767px) {
+  [data-testid="stSidebar"] {
+    min-width: 180px !important;
+    max-width: 200px !important;
+  }
+  [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    padding: 0.75rem 0.6rem !important;
+  }
+  /* Compact mobile typography */
+  [data-testid="stSidebar"] .stMarkdown h1,
+  [data-testid="stSidebar"] .stMarkdown h2 {
+    font-size: 0.9rem !important;
+  }
+  [data-testid="stSidebar"] .stMarkdown h3 {
+    font-size: 0.8rem !important;
+  }
+  [data-testid="stSidebar"] .stMarkdown p,
+  [data-testid="stSidebar"] .stMarkdown label {
+    font-size: 0.75rem !important;
+  }
+  /* Tighter spacing for sidebar widgets */
+  [data-testid="stSidebar"] [data-testid="stExpander"] {
+    margin-bottom: 0.35rem !important;
+  }
+  [data-testid="stSidebar"] .stSlider {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
 }
 
 /* Expander Styling */
@@ -340,10 +399,17 @@ hr {
   transform: translateY(-2px);
 }
 
-/* Cleanup: Hide Streamlit default elements */
+/* Cleanup: Hide Streamlit default chrome */
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
 header { visibility: hidden; }
+
+/* Hide Streamlit toolbar/decoration */
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"] {
+  display: none !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
