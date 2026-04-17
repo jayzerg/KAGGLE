@@ -118,19 +118,20 @@ The application will open at `http://localhost:8501`.
 
 ---
 
-📊 Validation Results
-DRPD was validated using the Bike_Sales_2021.xlsx dataset with the following outcomes:
-✅ Comparative Analytics Accuracy: 100% arithmetic consistency against manual Excel verification (50 test queries)
-✅ Forecasting Plausibility: 98.7% of linear regression projections avoided negative value predictions
-✅ ML Model Performance: Random Forest driver analysis achieved R² = 0.84 ± 0.06 (10-fold cross-validation)
+## 📊 Validation Results
+
+**DRPD was validated using the Bike_Sales_2021.xlsx dataset with the following outcomes:**
+**✅ Comparative Analytics Accuracy:** 100% arithmetic consistency against manual Excel verification (50 test queries)
+**✅ Forecasting Plausibility:** 98.7% of linear regression projections avoided negative value predictions
+**✅ ML Model Performance:** Random Forest driver analysis achieved R² = 0.84 ± 0.06 (10-fold cross-validation)
 
 ---
 
-📄 References
-[1] Chen, H., Chiang, R. H. L., & Storey, V. C. (2012). Business Intelligence and Analytics: From Big Data to Big Impact. MIS Quarterly, 36(4), 1165–1188.
-[2] Ghasemaghaei, M., & Calic, G. (2020). Assessing the impact of big data on firm innovation performance. Journal of Business Research, 108, 147–162.
-[3] Fader, P. S., & Hardie, B. G. S. (2013). The Value of Simple Models in New Product Forecasting. Applied Stochastic Models in Business and Industry, 29(1), 4–15.
+## 📄 References
+**[1] Chen, H., Chiang, R. H. L., & Storey, V. C. (2012). Business Intelligence and Analytics: From Big Data to Big Impact. MIS Quarterly, 36(4), 1165–1188.**
+**[2] Ghasemaghaei, M., & Calic, G. (2020). Assessing the impact of big data on firm innovation performance. Journal of Business Research, 108, 147–162.**
+**[3] Fader, P. S., & Hardie, B. G. S. (2013). The Value of Simple Models in New Product Forecasting. Applied Stochastic Models in Business and Industry, 29(1), 4–15.**
 
 ---
-Built with ❤️ by jayzerg | Research conducted at Benedicto College, Cebu City, Philippines
+**Built with ❤️ by jayzerg | Research conducted at Benedicto College, Cebu City, Philippines**
 ---
