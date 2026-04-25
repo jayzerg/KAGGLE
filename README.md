@@ -1,6 +1,5 @@
-[![DOI](https://zenodo.org/badge/1203584016.svg)](https://doi.org/10.5281/zenodo.19764858)
-
 # 📊 Dynamic Retail Performance Dashboard
+[![DOI](https://zenodo.org/badge/1203584016.svg)](https://doi.org/10.5281/zenodo.19764858)
 
 A professional, enterprise-grade Business Intelligence platform built with **Streamlit**, **Pandas**, **Plotly**, and **Scikit-Learn**. This application transforms raw retail data into a strategic, decision-ready analytics suite.
 
